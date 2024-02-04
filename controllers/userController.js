@@ -47,7 +47,6 @@ module.exports = {
       if (!dbUserData) {
         return res.status(404).json({ message: "We could not find a user with this id" });
       }
-
       res.json(dbUserData);
     } catch (err) {
       res.json(err);
@@ -57,11 +56,10 @@ module.exports = {
   async deleteUser(req, res) {
     try {
       const dbUserData = await User.findOneAndDelete({ _id: req.params.id });
-
       if (!dbUserData) {
         return res.status(404).json({ message: "We could not find a user with this id" });
       }
-      res.json({ message: "User deleted!" });
+      res.json({ message: "User Deleted" });
     } catch (err) {
       res.json(err);
     }

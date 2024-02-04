@@ -21,6 +21,8 @@ router.route("/:userId/friends/:friendId").post(addAFriend).delete(deleteAFriend
 
 module.exports = router;
 
+//http://localhost:3001/api/users/65bee4bcf5f294a5dd937a37/friends/65bee4bcf5f294a5dd937a3b
+
 
 
 
