@@ -1,33 +1,40 @@
 const router = require('express').Router();
+const { 
+  getThoughts,
+  getASingleThought,
+  createThought,
+  updateThought,
+  deleteThought,
+  createReaction,
+  deleteReaction
+} = require("../../controllers/thoughtController");
 
-const {
-    getThoughts,
-    getASingleThought,
-    createThought,
-    updateThought,
-    deleteThought,
-    addAReaction,
-    deleteAReaction,
-  } = require("../../controllers/userController");
+// Gets and posts all thoughts
+// http://localhost:3001/api/thoughts
+router.route("/")
+  .get(getThoughts)
+  .post(createThought);
 
-//gets and posts all thoughts 
-//http://localhost:3001/api/thoughts
-router.route("/").get(getThoughts).post(createThought);
-
-//gets a sungle thought by id puts and deletes
+// Gets a single thought by id, updates, and deletes
 // http://localhost:3001/api/thoughts/:thoughtId
-router.route("/:thoughtId").get(getASingleThought).put(updateThought).delete(deleteThought);
+router.route("/:thoughtId")
+  .get(getASingleThought)
+  .put(updateThought)
+  .delete(deleteThought);
 
-//creates a new thought
+// Creates a new thought
 // http://localhost:3001/api/thoughts/:userId
-router.route("/:userId").post(createThought);
+router.route("/:userId")
+  .post(createThought);
 
-//creates a reaction on a thought
+// Creates a reaction on a thought
 // http://localhost:3001/api/thoughts/:thoughtId/reactions
-router.route("/:thoughtId/reactions").post(addAReaction);
+router.route("/:thoughtId/reactions")
+  .post(createReaction);
 
-//puts and deletes reaction on a thought
+// Updates and deletes a reaction on a thought
 // http://localhost:3001/api/thoughts/:thoughtId/reactions/:reactionId
-router.route("/:thoughtId/reactions/:reactionId").delete(deleteAReaction);
+router.route("/:thoughtId/reactions/:reactionId")
+  .delete(deleteReaction);
 
 module.exports = router;

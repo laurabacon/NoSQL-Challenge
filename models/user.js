@@ -1,7 +1,7 @@
 const { Schema, model} = require('mongoose');
 
 //mongoose schema instance
-const UserNetworkSchema = new mongoose.Schema({
+const UserNetworkSchema = new Schema({
     username: {type: String, unique: true, required: true, trim: true},
     email: {type: String, unique: true, required: true, match: [/.+@.+\..+/]},
     thoughts: [
